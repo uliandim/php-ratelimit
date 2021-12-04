@@ -1,6 +1,6 @@
 {
   "type": "library",
-  "name": "jdimitrov/rate-limit",
+  "name": "jdimitrov/php-ratelimit",
   "description": "PHP rate limiting library with Leaky Bucket Algorithm",
   "require": {
     "php": ">=5.6"

@@ -1,0 +1,36 @@
+{
+  "type": "library",
+  "name": "jdimitrov/rate-limit",
+  "description": "PHP rate limiting library with Leaky Bucket Algorithm",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "php" : ">7.0",
+    "phpunit/phpunit": "^7.0"
+  },
+  "suggest": {
+    "predis/predis": "^1.1",
+    "ext-redis": "^2.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Julian Dimitrov",
+      "email": "uliandim@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "JDimitrov\\RateLimit\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "JDimitrov\\RateLimit\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "@php ./vendor/bin/phpunit"
+  }
+}

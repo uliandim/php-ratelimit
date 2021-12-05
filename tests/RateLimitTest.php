@@ -53,8 +53,6 @@ class RateLimitTest extends TestCase
         $label = uniqid("label", true);
         $rateLimit = $this->getRateLimit($adapter);
 
-        $rateLimit->purge($label);
-
         $this->assertEquals(self::MAX_REQUESTS, $rateLimit->getMaxRequests());
     }
 

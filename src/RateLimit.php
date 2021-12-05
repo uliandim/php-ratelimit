@@ -104,4 +104,12 @@ class RateLimit
         $this->adapter->set($this->key, self::HASHKEY_LEAK, $this->leak);
         $this->adapter->set($this->key, self::HASHKEY_LEFT, $this->maxRequests);
     }
+
+    /**
+     * @return int
+     */
+    public function getMaxRequests()
+    {
+        return $this->maxRequests;
+    }
 }

@@ -25,7 +25,7 @@ class RateLimitTest extends TestCase
             $this->markTestSkipped("redis extension not installed");
         }
         $redis = new \Redis();
-        $redis->connect('localhost');
+        $redis->connect('redis');
         $redis->flushDB(); // clear redis db
 
         $adapter = new Adapter\Redis($redis);
@@ -37,7 +37,7 @@ class RateLimitTest extends TestCase
         $predis = new \Predis\Client(
             [
                 'scheme' => 'tcp',
-                'host' => '127.0.0.1',
+                'host' => 'redis',
                 'port' => 6379,
                 'cluster' => false,
                 'database' => 1

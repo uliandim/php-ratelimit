@@ -3,7 +3,7 @@
   "name": "jdimitrov/php-ratelimit",
   "description": "PHP rate limiting library with Leaky Bucket Algorithm",
   "require": {
-    "php": "^7.*"
+    "php": "^7.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.0"

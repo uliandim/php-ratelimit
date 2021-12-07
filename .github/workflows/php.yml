@@ -35,6 +35,8 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
+        extensions: ${{ env.extensions }}
+        ini-values: ${{ env.ini }}
         
     - uses: actions/checkout@v2
 

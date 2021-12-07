@@ -33,6 +33,21 @@ class RateLimitTest extends TestCase
     }
 
     /**
+     * @requires extension apcu
+     */
+    public function testCheckAPCu()
+    {
+        if (!extension_loaded('apcu')) {
+            $this->markTestSkipped("apcu extension not installed");
+        }
+        if (ini_get('apc.enable_cli') == 0) {
+            $this->markTestSkipped("apc.enable_cli != 1; can't change at runtime");
+        }
+        $adapter = new Adapter\APCu();
+        $this->check($adapter);
+    }
+
+    /**
      * @requires extension redis
      */
     public function testCheckRedis()

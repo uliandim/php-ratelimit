@@ -6,20 +6,11 @@ PHP Rate Limiting Library With Leaky Bucket Algorithm with minimal external depe
 
 ```composer require jdimitrov/php-ratelimit```
 
-# Usage
-
-Only Redis is supported as adapter so far.
-
-# Installation
-
-```composer require jdimitrov/php-ratelimit```
-
 # Storage Adapters
 
 The PHP Rate Limit needs to know where to store data.
 
 Depending on which adapter you install, you may need to install additional libraries (predis/predis) or PHP extensions (e.g. Redis, Memcached, APC)
-
 
 - [APCu](https://pecl.php.net/package/APCu)
 - [Redis](https://pecl.php.net/package/redis) or [Predis](https://github.com/nrk/predis)

@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 class RateLimitTest extends TestCase
 {
     const NAME = "RateLimitTest";
-    const MAX_REQUESTS = 20;
-    const PERIOD = 2;
+    const MAX_REQUESTS = 100;
+    const PERIOD = 10;
 
     /**
      * @requires extension redis
@@ -50,10 +50,14 @@ class RateLimitTest extends TestCase
 
     private function check($adapter)
     {
-        $label = uniqid("label", true);
         $rateLimit = $this->getRateLimit($adapter);
 
         $this->assertEquals(self::MAX_REQUESTS, $rateLimit->getMaxRequests());
+
+        for ($i = 0; $i < 10; $i++) {
+            $rateLimit->check(10);
+            $this->assertEquals(self::MAX_REQUESTS - (10 * ($i+1), $rateLimit->getAllowance());
+        }
     }
 
     private function getRateLimit(Adapter $adapter)

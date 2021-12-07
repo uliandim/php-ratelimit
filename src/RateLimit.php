@@ -112,4 +112,12 @@ class RateLimit
     {
         return $this->maxRequests;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAllowance()
+    {
+        return $this->adapter->get($this->key, self::HASHKEY_LEFT);
+    }
 }

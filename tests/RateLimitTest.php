@@ -79,6 +79,17 @@ class RateLimitTest extends TestCase
         $this->check($adapter);
     }
 
+    public function testCheckMemcached()
+    {
+        if (!extension_loaded('memcached')) {
+            $this->markTestSkipped("memcached extension not installed");
+        }
+        $m = new \Memcached();
+        $m->addServer('localhost', 11211);
+        $adapter = new Adapter\Memcached($m);
+        $this->check($adapter);
+    }
+
     private function check($adapter)
     {
         $rateLimit = $this->getRateLimit($adapter);

@@ -2,11 +2,13 @@
 
 namespace JDimitrov\RateLimit\Adapter;
 
+use JDimitrov\RateLimit\Adapter;
+
 /**
  * @author Julian Dimitrov <uliandim@gmail.com>
  * @date Dec 5th, 2021
  */
-class Predis extends \JDimitrov\RateLimit\Adapter
+class Predis extends Adapter
 {
     /**
      * @var \Predis\ClientInterface

@@ -2,11 +2,13 @@
 
 namespace JDimitrov\RateLimit\Adapter;
 
+use JDimitrov\RateLimit\Adapter;
+
 /**
  * @author Julian Dimitrov <uliandim@gmail.com>
  * @date Dec 4th, 2021
  */
-class Redis extends \JDimitrov\RateLimit\Adapter
+class Redis extends Adapter
 {
     /**
      * @var \Redis

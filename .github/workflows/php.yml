@@ -53,9 +53,10 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress |
-           sudo apt-get update
-           sudo apt-get install libmemcached-dev memcached libsasl2-dev sasl2-bin zlib1g-dev
+      run: |
+        composer install --prefer-dist --no-progress
+        sudo apt-get update
+        sudo apt-get install libmemcached-dev memcached libsasl2-dev sasl2-bin zlib1g-dev
            
     - name: Start memcached daemons
       run: |

@@ -13,7 +13,7 @@ class APCu extends Adapter
 {
     public function set($key, $hashKey, $value)
     {
-        return apcu_store($key . "_" . $hashKey);
+        return apcu_store($key . "_" . $hashKey, $value);
     }
 
     public function get($key, $hashKey)

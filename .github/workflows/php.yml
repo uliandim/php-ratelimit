@@ -53,7 +53,29 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer install --prefer-dist --no-progress |
+           sudo apt-get update
+           sudo apt-get install libmemcached-dev memcached libsasl2-dev sasl2-bin zlib1g-dev
+           
+    - name: Start memcached daemons
+      run: |
+        export SASL_CONF_PATH="/tmp/sasl2"
+        mkdir "${SASL_CONF_PATH}"
+        export MEMCACHED_SASL_PWDB="${SASL_CONF_PATH}/sasldb2"
+        
+        # Create configuration
+        cat<<EOF > "${SASL_CONF_PATH}/memcached.conf"
+        mech_list: PLAIN
+        plainlog_level: 5
+        sasldb_path: ${MEMCACHED_SASL_PWDB}
+        EOF
+        echo "test" | /usr/sbin/saslpasswd2 -c memcached -a memcached -f "${MEMCACHED_SASL_PWDB}"
+        
+        # Run normal memcached
+        memcached -d -p 11211
+        
+        # Run memcached on port 11212 with SASL support
+        memcached -S -d -p 11212
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md

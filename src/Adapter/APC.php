@@ -3,6 +3,7 @@
 namespace JDimitrov\RateLimit\Adapter;
 
 use JDimitrov\RateLimit\Adapter;
+use JDimitrov\RateLimit\RateLimit;
 
 /**
  * @author Julian Dimitrov <uliandim@gmail.com>
@@ -22,6 +23,6 @@ class APC extends Adapter
 
     public function exists($key)
     {
-        return apc_exists($key);
+        return apcu_exists($key . "_" . RateLimit::HASHKEY_LEFT);
     }
 }

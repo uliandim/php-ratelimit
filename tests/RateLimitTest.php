@@ -56,7 +56,7 @@ class RateLimitTest extends TestCase
 
         for ($i = 0; $i < 10; $i++) {
             $rateLimit->check(10);
-            $this->assertEquals(self::MAX_REQUESTS - (10 * ($i+1), $rateLimit->getAllowance());
+            $this->assertEquals(self::MAX_REQUESTS - (10 * ($i+1)), $rateLimit->getAllowance());
         }
     }
 

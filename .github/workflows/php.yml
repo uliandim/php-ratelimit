@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest   
     env:
       extensions: apcu, memcached
-      ini: apc.enabled=1, apc.enable_cli=1"
+      ini: apc.enabled=1, apc.enable_cli=1
     
     # Service containers to run with `container-job`
     services:
